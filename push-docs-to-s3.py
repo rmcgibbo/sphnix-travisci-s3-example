@@ -1,7 +1,9 @@
 from __future__ import print_function
 import os
+import sys
 import boto
 from boto.s3.key import Key
+
 
 # The secret key is available as a secure environment variable
 # on travis-ci to push the build documentation to Amazon S3.
@@ -14,7 +16,7 @@ conn = boto.connect_s3(AWS_ACCESS_KEY_ID,
             AWS_SECRET_ACCESS_KEY)
 bucket = conn.get_bucket(BUCKET_NAME)
 
-root = 'docs/_build/html'
+root = sys.argv[1]
 for dirpath, dirnames, filenames in os.walk(root):
     for filename in filenames:
         fn = os.path.join(dirpath, filename)
