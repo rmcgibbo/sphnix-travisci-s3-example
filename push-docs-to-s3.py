@@ -2,7 +2,6 @@ from __future__ import print_function
 import os
 import boto
 from boto.s3.key import Key
-import mdtraj
 
 # The secret key is available as a secure environment variable
 # on travis-ci to push the build documentation to Amazon S3.
