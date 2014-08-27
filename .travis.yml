@@ -14,7 +14,7 @@ install:
 script:
   - nosetests
 
-after_sucess:
+after_success:
   - make -C docs html
   - python push-docs-to-s3.py
   
