@@ -1,0 +1,20 @@
+language: python
+
+env:
+  global:
+    # travis encrypt AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    # travis encrypt AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    - secure: TgfbKu+1vTZE7fPXWU/Kp/0ZqOEec27BIDKeSLGA8ys4cS4g44kI0qdyGO//wjzvomxmH1jYG7wEugYNXSulX8ZAtWhCYbZWiWtZnfmGkWL6e61j+etx3mGSnwYZL/pqItEYvp6E3kFFcuFEH7TUgtHNl74Nw160wuCjA5ViDdg=
+    - secure: PwK/nUgDDIbdoZxkZAbiYIMSKAS1wPD+kZey5LwaxFKFrl2Fw0/rwfpthKhFJNyzIBMG3bnV2BjBx2YecNhWBqivbj8XNvsfmVFQBp7tPztEZFhAIQUKhQynIGRvQfBNKROMKayb4Vn3oNHoO87NfoWp+wrk0Fb3/b8ciezBE4o=
+    - AWS_S3_BUCKET_NAME: sphnix-travisci-s3-example
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - nosetests
+
+after_sucess:
+  - make -C docs html
+  - python push-docs-to-s3.py
+  
