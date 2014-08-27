@@ -9,8 +9,8 @@ Travis-CI already), if the tests pass we'll use the Travis-CI virtual machines
 to build the documentation and push to Amazon S3. This way, your documentation
 stays current as you develop.
 
-The example docs for this project are deployed at: http://sphnix-travisci-s3-example.s3-website-us-west-1.amazonaws.com/
-Note that for a real project, you can set up a [custom domain](http://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html)
+The example docs for this project are deployed at: http://sphnix-travisci-s3-example.s3-website-us-west-1.amazonaws.com/.
+[Note that for a real project, you can set up a [custom domain](http://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html)]
 
 This is similar in spirit to [ReadTheDocs](https://readthedocs.org/), but lets you retain
 full access to the documentation build environment. This is criticially important if, for instance,
