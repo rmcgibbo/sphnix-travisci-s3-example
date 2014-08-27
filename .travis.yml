@@ -16,5 +16,5 @@ script:
 
 after_success:
   - make -C docs html
-  - python push-docs-to-s3.py
+  - python push-docs-to-s3.py docs/_build/html
   
