@@ -12,6 +12,12 @@ stays current as you develop.
 The example docs for this project are deployed at: http://sphnix-travisci-s3-example.s3-website-us-west-1.amazonaws.com/
 Note that for a real project, you can set up a [custom domain](http://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html)
 
+This is similar in spirit to [ReadTheDocs](https://readthedocs.org/), but lets you retain
+full access to the documentation build environment. This is criticially important if, for instance,
+your docs require python C extensions like numpy or scipy to be installed (which are not available
+on their platform), or your project's documentation is generated from [cython](http://cython.org/)
+docstrings, which can't be built or imported on ReadTheDocs.
+
 
 Instructions
 ------------
