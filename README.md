@@ -12,8 +12,9 @@ stays current as you develop.
 The example docs for this project are deployed at: http://sphnix-travisci-s3-example.s3-website-us-west-1.amazonaws.com/
 Note that for a real project, you can set up a [custom domain](http://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html)
 
-Here are some instructions on replicating this process for your own github
-project.
+
+Instructions
+------------
 
 1. If you don't already have one, create an Amazon AWS account. From the
    security credentials page, create an access key (Access Key ID and Secret
@@ -53,3 +54,22 @@ project.
 5. In the S3 web interface, also enable static website hosting. There is some
    more information about static website hosting at
    http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html.
+
+
+Things to watch out for
+-----------------------
+1. Versioning. Each sucessful build is going to push up another version of the docs
+   and overwrite the previous deployment. It you want to retain old versions, you'll
+   need to change things around a little bit. The place to start is
+   * Pick a versioning scheme. This amounts to choosing the path inside the bucket for
+     each document you push. Maybe prefix with the version number?
+   * Modify `push-docs-to-s3.py` to import your project, get the version number, and
+     prefix it onto the key for each bucket item.
+   * In the Amazon S3 web console, you can set the index document for static web hosting
+     in such a way that it points to one of your versions.
+2. Larger travis build matrices:
+   * If your travis project uses a build matrix to test against multiple versions of your platform
+     or dependencies, you'll want to modify the `after_success` section of `.travis.yml` such that
+     it only builds and pushes the docs once. By default, the `after_success` will get run after
+     each successful build in the matrix, and you probably don't want to push the same copy of the
+     docs to S3.
