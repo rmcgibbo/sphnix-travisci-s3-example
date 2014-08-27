@@ -14,7 +14,7 @@ conn = boto.connect_s3(AWS_ACCESS_KEY_ID,
             AWS_SECRET_ACCESS_KEY)
 bucket = conn.get_bucket(BUCKET_NAME)
 
-root = 'docs/_build'
+root = 'docs/_build/html'
 for dirpath, dirnames, filenames in os.walk(root):
     for filename in filenames:
         fn = os.path.join(dirpath, filename)
